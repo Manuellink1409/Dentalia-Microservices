@@ -3,6 +3,7 @@ package com.dentalia.patient.persistence.model;
 import com.dentalia.patient.persistence.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Patient {
 
     @Id
@@ -22,6 +24,7 @@ public class Patient {
     private String email;
     private String phone;
     @Column(name = "is_active")
+    @Enumerated(EnumType.STRING)
     private Status isActive;
 
 }
