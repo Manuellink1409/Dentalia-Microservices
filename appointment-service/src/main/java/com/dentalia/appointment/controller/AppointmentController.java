@@ -15,7 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AppointmentController {
 
-    public final AppointmentService appointmentService;
+    private final AppointmentService appointmentService;
+
 
     @GetMapping
     public ResponseEntity<List<AppointmentResponse>> findAllAppointments() {

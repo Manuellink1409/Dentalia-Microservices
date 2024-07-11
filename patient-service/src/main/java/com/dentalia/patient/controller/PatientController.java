@@ -49,8 +49,8 @@ public class PatientController {
     }
 
     @GetMapping("/{id}/exists")
-    public ResponseEntity<Boolean> patientExists
+    public boolean patientExists
             (@PathVariable Long id) {
-        return ResponseEntity.ok(patientService.patientExists(id));
+        return patientService.patientExists(id);
     }
 }

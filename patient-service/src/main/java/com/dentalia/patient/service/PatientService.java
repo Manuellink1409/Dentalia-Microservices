@@ -59,7 +59,7 @@ public class PatientService {
         return patientRepository.save(patient).getId();
     }
 
-    public Boolean patientExists(Long id) {
+    public boolean patientExists(Long id) {
         return patientRepository.existsByIdAndIsActive(id, Status.ACTIVE);
     }
 

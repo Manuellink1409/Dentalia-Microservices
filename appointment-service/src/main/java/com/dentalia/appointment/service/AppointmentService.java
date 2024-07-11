@@ -16,6 +16,7 @@ public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
     private final AppointmentMapper appointmentMapper;
+    private final CatalogPatientService catalogPatientService;
 
     public List<AppointmentResponse> findAllAppointments() {
         var listOfAppointments = appointmentRepository.findAll();
@@ -25,6 +26,10 @@ public class AppointmentService {
     }
 
     public Long createAppointment(AppointmentRequest request) {
+        boolean exists = catalogPatientService.patientExists(request.getPatientId());
+        if (!exists) {
+            throw new RuntimeException("Patient does not exist");
+        }
         var appointment = appointmentMapper.toAppointment(request);
         return appointmentRepository.save(appointment).getId();
     }
